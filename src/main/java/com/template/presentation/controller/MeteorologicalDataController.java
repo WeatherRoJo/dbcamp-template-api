@@ -2,6 +2,7 @@ package com.template.presentation.controller;
 
 import com.template.business.services.MeteorologicalDataService;
 import com.template.data.entity.MeteorologicalDataEntity;
+import com.template.data.enums.WeatherEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ public class MeteorologicalDataController {
 
     @PostMapping
     public ResponseEntity<MeteorologicalDataEntity> createMeteorologicalData(@RequestBody MeteorologicalDataEntity meteorologicalData) {
+        
         try {
             MeteorologicalDataEntity _meteorologicalData = meteorologicalDataService.create(new MeteorologicalDataEntity(meteorologicalData.getCity(),
                     meteorologicalData.getWeatherDate(),

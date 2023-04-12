@@ -1,5 +1,6 @@
 package com.template.data.entity;
 
+import com.template.data.enums.WeatherEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -20,13 +21,13 @@ public class MeteorologicalDataEntity {
     @Column(name = "weather_date")
     private LocalDate weatherDate;
 
-    //    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "morning_weather")
-    private String morningWeather;
+    private WeatherEnum morningWeather;
 
-    //    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "night_weather")
-    private String nightWeather;
+    private WeatherEnum nightWeather;
 
     @Column(name = "max_temperature")
     private int maxTemperature;
@@ -43,7 +44,7 @@ public class MeteorologicalDataEntity {
     @Column(name = "wind_speed")
     private int windSpeed;
 
-    public MeteorologicalDataEntity(String city, LocalDate weatherDate, String morningWeather, String nightWeather,
+    public MeteorologicalDataEntity(String city, LocalDate weatherDate, WeatherEnum morningWeather, WeatherEnum nightWeather,
                                     int maxTemperature, int minTemperature, int humidity, int precipitation, int windSpeed) {
         this.city = city;
         this.weatherDate = weatherDate;

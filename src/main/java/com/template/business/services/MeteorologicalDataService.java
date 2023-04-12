@@ -13,7 +13,6 @@ public class MeteorologicalDataService {
     MeteorologicalDataRepository meteorologicalDataRepository;
 
     public MeteorologicalDataEntity create(@RequestBody MeteorologicalDataEntity meteorologicalData) {
-
         return meteorologicalDataRepository.save(new MeteorologicalDataEntity(meteorologicalData.getCity(),
                 meteorologicalData.getWeatherDate(),
                 meteorologicalData.getMorningWeather(),
@@ -24,6 +23,4 @@ public class MeteorologicalDataService {
                 meteorologicalData.getPrecipitation(),
                 meteorologicalData.getWindSpeed()));
     }
-
-
 }
