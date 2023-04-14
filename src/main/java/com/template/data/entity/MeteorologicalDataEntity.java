@@ -2,11 +2,13 @@ package com.template.data.entity;
 
 import com.template.data.enums.WeatherEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Getter
+@AllArgsConstructor
 @Entity
 @Table(name = "meteorological_data")
 public class MeteorologicalDataEntity {
@@ -56,6 +58,5 @@ public class MeteorologicalDataEntity {
         this.precipitation = precipitation;
         this.windSpeed = windSpeed;
     }
-
 
 }

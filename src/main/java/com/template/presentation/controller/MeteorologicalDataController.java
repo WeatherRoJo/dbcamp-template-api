@@ -1,8 +1,8 @@
 package com.template.presentation.controller;
 
 import com.template.business.services.MeteorologicalDataService;
+import com.template.data.dto.MeteorologicalDataDTO;
 import com.template.data.entity.MeteorologicalDataEntity;
-import com.template.data.enums.WeatherEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,19 +17,10 @@ public class MeteorologicalDataController {
     MeteorologicalDataService meteorologicalDataService;
 
     @PostMapping
-    public ResponseEntity<MeteorologicalDataEntity> createMeteorologicalData(@RequestBody MeteorologicalDataEntity meteorologicalData) {
-        
+    public ResponseEntity<MeteorologicalDataEntity> createMeteorologicalData(@RequestBody MeteorologicalDataDTO meteorologicalDataDTO) {
         try {
-            MeteorologicalDataEntity _meteorologicalData = meteorologicalDataService.create(new MeteorologicalDataEntity(meteorologicalData.getCity(),
-                    meteorologicalData.getWeatherDate(),
-                    meteorologicalData.getMorningWeather(),
-                    meteorologicalData.getNightWeather(),
-                    meteorologicalData.getMaxTemperature(),
-                    meteorologicalData.getMinTemperature(),
-                    meteorologicalData.getHumidity(),
-                    meteorologicalData.getPrecipitation(),
-                    meteorologicalData.getWindSpeed()));
-            return new ResponseEntity<>(_meteorologicalData, HttpStatus.CREATED);
+            MeteorologicalDataEntity _meteorologicalData = meteorologicalDataService.create(meteorologicalDataDTO);
+            return new ResponseEntity<MeteorologicalDataEntity>(_meteorologicalData, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
