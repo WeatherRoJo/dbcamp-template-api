@@ -4,10 +4,10 @@ CREATE TABLE IF NOT EXISTS meteorological_data (
   weather_date DATE NOT NULL,
   morning_weather VARCHAR(20) NOT NULL,
   night_weather VARCHAR(20) NOT NULL,
-  max_temperature INT NOT NULL,
-  min_temperature INT NOT NULL,
-  humidity INT NOT NULL,
-  precipitation INT NOT NULL,
-  windSpeed INT NOT NULL,
+  max_temperature INTEGER NOT NULL,
+  min_temperature INTEGER NOT NULL,
+  humidity INTEGER NOT NULL,
+  precipitation INTEGER NOT NULL,
+  wind_speed INTEGER NOT NULL,
   PRIMARY KEY (id)
 );

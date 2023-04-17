@@ -2,13 +2,17 @@ package com.template.data.entity;
 
 import com.template.data.enums.WeatherEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Getter
-@AllArgsConstructor
 @Entity
 @Table(name = "meteorological_data")
 public class MeteorologicalDataEntity {
@@ -17,6 +21,7 @@ public class MeteorologicalDataEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotBlank
     @Column(name = "city")
     private String city;
 
@@ -32,19 +37,19 @@ public class MeteorologicalDataEntity {
     private WeatherEnum nightWeather;
 
     @Column(name = "max_temperature")
-    private int maxTemperature;
+    private Integer maxTemperature;
 
     @Column(name = "min_temperature")
     private int minTemperature;
 
     @Column(name = "humidity")
-    private int humidity;
+    private Integer humidity;
 
     @Column(name = "precipitation")
-    private int precipitation;
+    private Integer precipitation;
 
     @Column(name = "wind_speed")
-    private int windSpeed;
+    private Integer windSpeed;
 
     public MeteorologicalDataEntity(String city, LocalDate weatherDate, WeatherEnum morningWeather, WeatherEnum nightWeather,
                                     int maxTemperature, int minTemperature, int humidity, int precipitation, int windSpeed) {
