@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
 
 @Service
 public class MeteorologicalDataService {
@@ -17,12 +16,12 @@ public class MeteorologicalDataService {
     @Autowired
     MeteorologicalDataRepository meteorologicalDataRepository;
 
-    public Page<MeteorologicalDataEntity> getAll(String city, Pageable pagination) {
-        if (city == null) {
-            return meteorologicalDataRepository.findAll(pagination);
-        } else {
-            return meteorologicalDataRepository.findByCity(city, pagination);
-        }
+    public Page<MeteorologicalDataEntity> getAll(Pageable pagination) {
+        return meteorologicalDataRepository.findAll(pagination);
+    }
+
+    public Page<MeteorologicalDataEntity> getAllByCity(String city, Pageable pagination) {
+        return meteorologicalDataRepository.findByCity(city, pagination);
     }
 
     public MeteorologicalDataEntity create(@RequestBody MeteorologicalDataDTO meteorologicalData) {

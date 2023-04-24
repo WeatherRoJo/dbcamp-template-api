@@ -83,7 +83,7 @@ public class MeteorologicalDataTests {
         Page<MeteorologicalDataEntity> page = new PageImpl<>(meteorologicalDataList);
         when(meteorologicalDataRepositoryMock.findAll(any(Pageable.class))).thenReturn(page);
 
-        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAll(null, pagination);
+        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAll(pagination);
 
         assertNotNull(response);
         assertEquals(meteorologicalDataList, response.getContent());
@@ -99,7 +99,7 @@ public class MeteorologicalDataTests {
         Page<MeteorologicalDataEntity> page = new PageImpl<>(meteorologicalDataList);
         when(meteorologicalDataRepositoryMock.findByCity(anyString(), any(Pageable.class))).thenReturn(page);
 
-        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAll("Porto Alegre", pagination);
+        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAllByCity("Porto Alegre", pagination);
         assertNotNull(response);
         assertEquals(meteorologicalDataList, response.getContent());
         assertEquals(2, response.getTotalElements());
@@ -112,7 +112,7 @@ public class MeteorologicalDataTests {
         Page<MeteorologicalDataEntity> page = mock(Page.class);
         when(meteorologicalDataRepositoryMock.findByCity(anyString(), any(Pageable.class))).thenReturn(page);
 
-        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAll("São Paulo", pagination);
+        Page<MeteorologicalDataEntity> response = meteorologicalDataService.getAllByCity("São Paulo", pagination);
         assertNotNull(response);
         assertEquals(0, response.getTotalElements());
     }
